@@ -1,0 +1,53 @@
+
+
+
+import javax.swing.JFrame;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+/*
+import pkg_model.BaseDeDonnes;
+import pkg_utils.Article;
+import pkg_utils.ProviderInfo;
+import pkg_view.ProviderDialog;
+import pkg_view.ViewArticlesChartBar;
+import pkg_view.ViewArticlesTable;
+import pkg_view.ViewLogin;
+import pkg_view.ViewProvider;
+import pkg_view.ViewRegister;
+import pkg_view.ViewRetailer;*/
+
+public class Detallant{
+    Private BaseDeDonnees database;
+
+    public Detallant(){
+	database= new BaseDeDonnees;
+    }
+
+    public void Login(JFrame frame, String login, String password) {
+	int res = dataBase.Login(login, password);
+	if (res == 1) {
+	    new ViewRetailer(frame);
+	} else {
+	    JOptionPane.showMessageDialog(null, "Login or password incorrect", "Error", JOptionPane.ERROR_MESSAGE);
+	}
+    }
+    
+
+
+    public void ajouterArticle( String nom, int codeBarre, int quantiteEnStock, int prixDevente,) {
+	Object[] articleObj = {nom, codeBarre, quantiteEnStock, prixDevente};
+	Article article = new Article(nom, codeBarre, quantiteEnStock, prixDevente);
+	dataBase.insertArticles(article);
+	
+	//((DefaultTableModel)parent.getTable().getModel()).addRow(articleObj);
+	
+    }
+    
+    
+    
+
+
+    
+    
+}
